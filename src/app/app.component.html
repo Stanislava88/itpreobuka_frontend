@@ -1,0 +1,36 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-inverse" *ngIf="staticLoggedUser == null">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">{{title}}</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-inverse" *ngIf="staticLoggedUser != null">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">{{title}}</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="/bank">Banks</a></li>
+      <li *ngIf="staticIsAdmin == 'true'"><a href="/client">Clients</a></li>
+      <li><a href="/account">Accounts</a></li>
+      <li><a href="/transaction">Transactions</a></li>
+      <li><a href="/payment">Online payment</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="staticIsAdmin == 'true'"><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign up new user</a></li>
+      <li><a href="" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

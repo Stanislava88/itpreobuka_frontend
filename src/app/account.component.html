@@ -1,0 +1,48 @@
+<div class="container">
+
+  <!-- <div>
+    <table style="width : 300px" align="center" border=1>
+      <tr>
+        <td>
+          <div>
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div >
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div> -->
+<!--  -->
+  <!-- <br /> -->
+
+  <input type="text" id="myInput" (keyup)="onKey($event)" placeholder="Search for accounts..">
+
+  <table id="myTable" *ngIf="accounts != null" style="width : 100%"  border="2">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Account number</th>
+        <th>Balance</th>
+        <th>Bank</th>
+        <th>Full name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let acc of accounts">
+        <td> {{acc.id}}</td>
+        <td> {{acc.accountNumber}}</td>
+        <td> {{acc.balance}}</td>
+        <td> {{acc.bank.name}}</td>
+        <td> {{acc.client.name}} {{acc.client.surname}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

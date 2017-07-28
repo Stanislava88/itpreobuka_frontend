@@ -1,0 +1,84 @@
+<table border=1 class="main_table" align="center">
+  <tr valign="top">
+    <td>
+      <div>
+        <label for="sender">Sender</label>
+        <!-- <input list="myAcc" [(ngModel)]="sender" id="sender" style="resize:none" name="name" rows="3" cols="50"> -->
+
+        <select style="width : 100%" (change)="myAccOnChange($event)">
+          <option value="-1"></option>
+          <option *ngFor="let acc of myAccounts" value="{{acc.accountNumber}}">ID: {{acc.id}}, Client name: {{acc.client.name}} {{acc.client.surname}}, Bank: {{acc.bank.name}}</option>
+        </select>
+        <br>
+        <label for="reason">Reason of payment</label>
+        <textarea [(ngModel)]="reason" id="reason" style="resize:none" name="reason" rows="8" cols="50"></textarea>
+
+        <label for="receiver">Receiver</label>
+        <!-- <textarea [(ngModel)]="receiver" id="receiver" style="resize:none" name="receiver" rows="3" cols="50"></textarea> -->
+        <select style="width : 100%" (change)="otherAccOnChange($event)">
+          <option value=""></option>
+          <option *ngFor="let acc of otherAccounts" value="{{acc.accountNumber}}">ID: {{acc.id}}, Client name: {{acc.client.name}} {{acc.client.surname}}, Bank: {{acc.bank.name}}</option>
+        </select>
+      </div>
+    </td>
+    <td >
+      <table>
+        <tr>
+          <td style="max-width:100px">
+            <label>Id</label>
+            <input [(ngModel)]="id" style="width:100%" type="text" name="id">
+          </td>
+          <td style="max-width:100px">
+            <label>Currency</label>
+            <!-- <input [(ngModel)]="currency" style="width:100%" type="text" name="currency"> -->
+            <select style="width:100%" (change)="currencyOnChange($event)">
+              <option value=""></option>
+              <option *ngFor="let curr of currencies" value="{{curr.name}}">{{curr.name}}</option>
+            </select>
+          </td>
+          <td style="max-width:350px">
+            <label>Amount</label>
+            <input [(ngModel)]="amount" style="width:100%" type="number" name="amount">
+          </td>
+       </tr>
+       <tr>
+         <td style="max-width:100%" colspan=3>
+           <label>Sender account</label>
+           <input readonly [(ngModel)]="senderAccount" style="width:100%" type="number" name="sender_account">
+         </td>
+      </tr>
+      <tr>
+        <td style="max-width:100px">
+          <label>Model</label>
+          <input [(ngModel)]="senderModel" style="width:100%" type="number" name="sender_model">
+        </td>
+        <td style="max-width:350px" colspan=2>
+          <label>Sender call to number</label>
+          <input [(ngModel)]="senderCall" style="width:100%" type="number" name="sender_call">
+        </td>
+      </tr>
+      <tr>
+        <td style="max-width:100%" colspan=3>
+          <label>Receiver account</label>
+          <input readonly [(ngModel)]="receiverAccount" style="width:100%" type="number" name="receiver_account">
+        </td>
+     </tr>
+     <tr>
+       <td style="max-width:100px">
+         <label>Model</label>
+         <input [(ngModel)]="receiverModel" style="width:100%" type="number" name="receiver_model">
+       </td>
+       <td style="max-width:350px" colspan=2>
+         <label>Receiver call to number</label>
+         <input [(ngModel)]="receiverCall" style="width:100%" type="number" name="receiver_call">
+       </td>
+     </tr>
+     <tr>
+       <td align="right" style="width: 100%; padding: 15px" colspan=3>
+         <button (click)="sendTransaction()">Send transaction</button>
+       </td>
+     </tr>
+     </table>
+    </td>
+  </tr>
+</table>

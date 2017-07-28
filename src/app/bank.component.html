@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div style="width :100% " *ngIf="staticIsAdmin == 'true'">
+    <div class="col-xs-4">
+      <label for="name">New bank name:</label>
+      <input type="name" [(ngModel)]="bankName" class="form-control" id="name">
+    </div>
+    <div class="col-xs-4">
+      <label for="submit">&nbsp;</label>
+      <input type="submit" class="form-control" id="submit" (click)=addBank()>
+    </div>
+  </div>
+  <br><br><br>
+  <div>
+    <br>
+    <input type="text" id="myInput" (keyup)="onKey($event)" placeholder="Search for banks..">
+
+    <table id="myTable" *ngIf="banks != null" style="width : 100%"  border="2">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>PIB</th>
+          <th>NBS</th>
+          <th *ngIf="staticIsAdmin == 'true'">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bank of banks">
+          <td> {{bank.id}}</td>
+          <td> {{bank.name}}</td>
+          <td> {{bank.pib}}</td>
+          <td> {{bank.nbsnumber}}</td>
+          <td *ngIf="staticIsAdmin == 'true'" ><a style="cursor : pointer;" (click)="deleteBank(bank.id)">Delete {{bank.name}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
